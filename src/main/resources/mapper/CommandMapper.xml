@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.CommandMapper">
+
+    <!--查询表-->
+    <select id="selectBaseTables" resultMap="TableResult">
+       SELECT TABLE_NAME AS `name` FROM information_schema.TABLES WHERE TABLE_SCHEMA=(SELECT DATABASE())
+    </select>
+    <!--查询列-->
+    <select id="selectBaseColumns" parameterType="String" resultType="java.lang.String">
+       SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = (SELECT DATABASE()) AND TABLE_NAME=#{name}
+    </select>
+    <!--查询数据-->
+    <select id="selectTableRows" resultType="java.util.Map" parameterType="String">
+       SELECT * FROM  `${_parameter}`
+    </select>
+    <!--查询model对象-->
+    <resultMap type="com.model.BaseTables" id="TableResult">
+        <result column="name" property="name"/>
+        <collection column="name" ofType="java.util.List" property="columns"
+                    select="selectBaseColumns"></collection>
+        <collection column="name" ofType="java.util.List" property="rows"
+                    select="selectTableRows"></collection>
+    </resultMap>
+
+    <!--执行commandSql-->
+    <select id="executeSqlCmd" resultType="int" parameterType="String">
+       ${_parameter}
+    </select>
+
+
+</mapper>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>基础平台</title>
+    <link th:href="@{plugin/element-ui/lib/theme-chalk/index.css}" rel="stylesheet"/>
+    <script th:src="@{plugin/vue/vue-2.5.13.min.js}"></script>
+    <script th:src="@{plugin/element-ui/lib/index.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.js"></script>
+</head>
+<body>
+<div id="app">
+    <template>
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="数据中心" name="first">
+
+                <el-row :gutter="24">
+                    <el-col :span="4"><div class="grid-content bg-purple">
+                        <el-collapse
+                                accordion
+                                v-for="(item,index) in baseData"
+                                :key="index" @change="handleChange(item)">
+                            <el-collapse-item :title="item.name">
+                                <ul class="f-list">
+                                    <li  class="pull-left"
+                                            v-for="column in item.columns"
+                                            :key="column">
+                                        <a v-text="column"></a>
+                                    </li>
+                                </ul>
+                            </el-collapse-item>
+                        </el-collapse>
+                    </div></el-col>
+                    <el-col :span="20"><div class="grid-content bg-purple">
+
+                        <el-table :data="tableList">
+                            <el-table-column :label="key" v-for ="(value,key) in tableList[0]"  :key="key" >
+                                <template slot-scope="scope">
+                                    <span>{{scope.row[key]}}</span>
+                                </template>
+                            </el-table-column>
+                        </el-table>
+
+                    </div></el-col>
+                </el-row>
+
+
+
+            </el-tab-pane>
+            <el-tab-pane label="数据同步" name="second">配置管理</el-tab-pane>
+        </el-tabs>
+    </template>
+</div>
+<style lang="scss">
+    .f-list {
+        overflow: auto;
+        zoom: 1;
+        list-style-type: none;
+        padding: 10px;
+    li {
+        width: 12.5%;
+        text-align: center;
+        padding: 2px;
+        color: #08c;
+        cursor: pointer;
+        display: table;
+        -webkit-transition: all .2s;
+        -moz-transition: all .2s;
+        -ms-transition: all .2s;
+        -o-transition: all .2s;
+        transition: all .2s;
+    &:hover {
+         text-decoration: underline;
+     }
+    a {
+        height: 43px;
+        display: table-cell;
+        vertical-align: middle;
+        -webkit-transition: all .2s;
+        -moz-transition: all .2s;
+        -ms-transition: all .2s;
+        -o-transition: all .2s;
+        transition: all .2s;
+    }
+    a, a:hover, a:active, a:focus {
+        text-decoration: none;
+        outline: none;
+        color: #08c;
+    }
+    a:focus, a:hover {
+        color: #23527c;
+    }
+    }
+    }
+
+</style>
+<script>
+    new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                baseData:[],
+                activeName: 'first',
+                tableList: []
+            }
+        },
+        mounted: function () {
+            this.loadData();
+        },
+        methods: {
+            init: function () {
+
+            },
+            handleChange:function(table){
+                this.header = [];
+                for(var i in table.rows[0]) {
+                    this.header.push(i)
+                }
+                //编辑内容数据
+                for(var i in table.rows) {
+                    var arr = [];
+                    for(var j in table.rows[i]) {
+                        arr.push(table.rows[i][j])
+                    }
+                    this.tableList.push(arr)
+                }
+            },
+            handleClick(tab, event) {
+                console.log(tab, event);
+            },
+            loadData: function () {
+                this.$http.get('command/getTables', {emulateJSON: true}).then(
+                    function (res) {
+                        this.baseData=res.body;
+                        debugger
+                    }, function (err) {
+
+                    });
+
+            }
+        }
+    })
+</script>
+</body>
+</html>
