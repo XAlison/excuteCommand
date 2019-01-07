@@ -1,20 +1,12 @@
 package com.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @ClassName: BaseTables
- * @Description: TODO
- * @Author: Administrator
- * @Date: 2019/1/3 10:41
- * @Version 1.0
- */
-public class BaseTables {
+public class BaseTable {
     private String name;
-    private List<String> columns;
-    private List<Map<String,Object>> rows;
+    private List<BaseColumn> columns;
+    private List<Map<String, Object>> rows;
 
     public String getName() {
         return name;
@@ -24,11 +16,11 @@ public class BaseTables {
         this.name = name;
     }
 
-    public List<String> getColumns() {
+    public List<BaseColumn> getColumns() {
         return columns;
     }
 
-    public void setColumns(List<String> columns) {
+    public void setColumns(List<BaseColumn> columns) {
         this.columns = columns;
     }
 
@@ -39,4 +31,5 @@ public class BaseTables {
     public void setRows(List<Map<String, Object>> rows) {
         this.rows = rows;
     }
+
 }

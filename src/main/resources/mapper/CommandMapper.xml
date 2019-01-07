@@ -7,22 +7,22 @@
        SELECT TABLE_NAME AS `name` FROM information_schema.TABLES WHERE TABLE_SCHEMA=(SELECT DATABASE())
     </select>
     <!--查询列-->
-    <select id="selectBaseColumns" parameterType="String" resultType="java.lang.String">
-       SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = (SELECT DATABASE()) AND TABLE_NAME=#{name}
+    <select id="selectBaseColumns" parameterType="String" resultType="com.model.BaseColumn">
+      SELECT COLUMN_NAME AS columnName,DATA_TYPE AS type FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = (SELECT DATABASE())
+      AND TABLE_NAME='${_parameter}'
     </select>
     <!--查询数据-->
     <select id="selectTableRows" resultType="java.util.Map" parameterType="String">
        SELECT * FROM  `${_parameter}`
     </select>
     <!--查询model对象-->
-    <resultMap type="com.model.BaseTables" id="TableResult">
+    <resultMap type="com.model.BaseTable" id="TableResult">
         <result column="name" property="name"/>
         <collection column="name" ofType="java.util.List" property="columns"
                     select="selectBaseColumns"></collection>
         <collection column="name" ofType="java.util.List" property="rows"
                     select="selectTableRows"></collection>
     </resultMap>
-
     <!--执行commandSql-->
     <select id="executeSqlCmd" resultType="int" parameterType="String">
        ${_parameter}

@@ -1,7 +1,7 @@
 package com.service;
 
 import com.mapper.CommandMapper;
-import com.model.BaseTables;
+import com.model.BaseTable;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ public class CommandService {
     @Autowired
     private CommandMapper commandMapper;
 
-    public List<BaseTables> selectBaseTables() {
+    public List<BaseTable> selectBaseTables() {
         return commandMapper.selectBaseTables();
     }
 
