@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.MemberMapper">
+
+
+    <insert id="register" parameterType="com.model.Member">
+    INSERT INTO member (id, phone, memberName,
+      companyName, password, status,
+      registerTime)
+    VALUES (#{id,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{memberName,jdbcType=VARCHAR},
+      #{companyName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
+      #{registerTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <!--<select id="selectByPrimaryKey" parameterType="com.model.Member" resultType="com.model.Member">-->
+        <!--SELECT-->
+        <!--<include refid="Base_Column_List" />-->
+        <!--FROM member-->
+        <!--WHERE id = #{id,jdbcType=VARCHAR}-->
+    <!--</select>-->
+
+</mapper>

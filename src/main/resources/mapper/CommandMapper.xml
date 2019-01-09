@@ -4,12 +4,12 @@
 
     <!--查询表-->
     <select id="selectBaseTables" resultMap="TableResult">
-       SELECT TABLE_NAME AS `name` FROM information_schema.TABLES WHERE TABLE_SCHEMA=(SELECT DATABASE())
+       SELECT TABLE_NAME AS `name` FROM information_schema.TABLES WHERE TABLE_SCHEMA = (SELECT DATABASE())
     </select>
     <!--查询列-->
     <select id="selectBaseColumns" parameterType="String" resultType="com.model.BaseColumn">
       SELECT COLUMN_NAME AS columnName,DATA_TYPE AS type FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = (SELECT DATABASE())
-      AND TABLE_NAME='${_parameter}'
+      AND TABLE_NAME = '${_parameter}'
     </select>
     <!--查询数据-->
     <select id="selectTableRows" resultType="java.util.Map" parameterType="String">

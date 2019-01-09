@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
+import javax.sql.DataSource;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.jdbc.ScriptRunner;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,8 @@ public class CommandController {
 
     @Autowired
     private CommandService commandService;
+    @Autowired
+    private  DataSource dataSource;
 
     @RequestMapping("/getTables")
     public List<BaseTable> getTables(HttpServletRequest request) throws IOException, SQLException {
