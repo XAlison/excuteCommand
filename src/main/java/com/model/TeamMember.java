@@ -11,8 +11,6 @@ public class TeamMember {
 
     private String memberId;
 
-    private String memberAuthorityId;
-
     private Integer status;
 
     private Date joinTime;

@@ -1,5 +1,80 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mapper.TeamMapper">
+    <!--添加团队-->
+    <insert id="addTeam" parameterType="com.model.Team">
+    INSERT INTO team (id, teamName, creator,
+      createTime, updateTime, status
+      )
+    VALUES (#{id,jdbcType=VARCHAR}, #{teamName,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR},
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}
+      )
+    </insert>
+    <!--删除团队成员-->
+    <update id="deleteTeamMember" parameterType="com.model.TeamMember">
+        UPDATE team_member
+        SET  status = 0
+        WHERE id = #{id,jdbcType=VARCHAR} AND   member_id = #{memberId,jdbcType=VARCHAR}
+    </update>
+    <!--添加团队成员-->
+    <insert id="addTeamMember" parameterType="com.model.TeamMember">
+     INSERT INTO team_member (id, teamName, member_id,status, joinTime
+      )
+     VALUES (#{id,jdbcType=VARCHAR}, #{teamName,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR},
+      #{status,jdbcType=INTEGER}, #{joinTime,jdbcType=TIMESTAMP}
+      )
+    </insert>
+    <!--是否存在当前成员-->
+    <select id="isContainMember" parameterType="com.model.TeamMember" resultType="boolean">
+      SELECT COUNT(*) FROM team_member WHERE member_id = #{memberId} AND  id = #{id}
+    </select>
+    <!--添加邀请链接-->
+    <insert id="addMemberInvite" parameterType="com.model.TeamMemberInvite">
+    INSERT INTO team_member_invite (id, memberId, teamId,
+      inviteCode, status, createTime,
+      invalidTime)
+    VALUES (#{id,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR}, #{teamId,jdbcType=VARCHAR},
+      #{inviteCode,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+      #{invalidTime,jdbcType=TIMESTAMP})
+  </insert>
+    <!--失效邀请链接-->
+    <update id="cancelInvite" parameterType="com.model.TeamMemberInvite">
+        UPDATE team_member_invite
+        SET  status = 0
+        WHERE memberId = #{memberId} AND  invalidTime <![CDATA[ <= ]]> now()
+    </update>
+    <!--校验邀请链接是否有效-->
+    <select id="isLinkInvite" parameterType="com.model.TeamMember" resultType="boolean">
+      SELECT COUNT(*) FROM team_member_invite WHERE inviteCode = #{inviteCode} AND  status = 1
+    </select>
+    <!--获取我的团队信息-->
+    <select id="findMyTeam" parameterType="String" resultType="com.model.TeamViewModel">
+      SELECT member.id AS memberId,member.memberName AS manage,member.phone AS managePhone, team.teamName AS  teamName,team.id AS  teamId
+        FROM member LEFT JOIN team ON member.id = team.creator
+        WHERE member.`status`=1
+        AND team.`status`= 1  AND  member.id = #{memberId}
+    </select>
+    <!--获取团队成员-->
+    <select id="findTeamMembers" parameterType="String" resultType="com.model.TeamViewModel">
+        SELECT team_member.memberId AS memberId,team.id AS  teamId, member.memberName AS manage,member.phone AS managePhone, team.teamName AS  teamName
+        FROM team_member LEFT JOIN team ON team_member.teamId = team.id LEFT JOIN member ON team_member.memberId = member.id
+        WHERE  team_member.`status`=1 AND team.`status` = 1  AND team_member.teamId = #{teamId}
+    </select>
+    <!--获取团队成员权限列表-->
+    <select id="findMemberAuth" parameterType="com.model.TeamViewModel" resultType="com.model.MemberAuthorityModel">
+      SELECT
+        application.id AS applicationId,
+        application.applicationName AS applicationName,
+        team_member_authority.isViewDetails AS isViewDetails,
+        team_member_authority.isRelease AS isRelease,
+        team_member_authority.isDevelop AS isDevelop
+        FROM
+            team_member_authority
+        LEFT JOIN application ON team_member_authority.applicationId = application.id
+        WHERE
+            team_member_authority.`status` = 1
+        AND application.`status` = 1
+        AND   team_member_authority.memberId = #{memberId} AND  team_member_authority.teamId = #{teamId}
+    </select>
 
 </mapper>

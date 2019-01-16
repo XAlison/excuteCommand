@@ -1,8 +1,16 @@
 package com.mapper;
 
 
-import com.model.MemberApplication;
+import com.model.Application;
+import java.util.Map;
 
 public interface ApplicationMapper {
-    MemberApplication findApplicationByDomain(String domain);
+
+    int addApplication(Application application);
+
+    int updateApplication(Application application);
+
+    Application findApplicationByDomain(Map<String, String> map);
+
+    Application findApplicationById(Map<String, String> map);
 }

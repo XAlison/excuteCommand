@@ -4,7 +4,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class MemberApplication {
+public class Application {
     private String id;
 
     private String creator;
@@ -22,6 +22,8 @@ public class MemberApplication {
     private Integer status;
 
     private Integer applicationStatus;
+
+    private String keepRecord;
 
     private Date createTime;
 

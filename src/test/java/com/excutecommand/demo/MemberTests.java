@@ -21,14 +21,14 @@ public class MemberTests {
     @Test
     public void contextLoads() {
         Member member =new Member();
-        member.setId(UUID.randomUUID().toString());
+        member.setId("222ef3b8-9525-4f97-aa6e-081efb66df43");
         member.setPhone("15087429695");
         member.setMemberName("张三");
-        member.setPassword("888888");
+        member.setPassword("9999999");
         member.setCompanyName("北京华奥汽车服务有限公司");
         member.setStatus(1);
         member.setRegisterTime(new Date());
-        int obj = memberService.register(member);
+        int obj = memberService.setPassword(member);
         System.err.print(obj);
     }
 

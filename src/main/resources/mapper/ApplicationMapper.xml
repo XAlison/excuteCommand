@@ -2,4 +2,74 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mapper.ApplicationMapper">
 
+    <!--保存应用-->
+    <insert id="addApplication" parameterType="com.model.Application">
+    INSERT INTO application (id, creator, applicationName,
+      applicationDescription, logo, prodDomain,
+      testDomain, status, applicationStatus,
+      keepRecord, createTime, releaseTime,
+      version)
+    VALUES (#{id,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, #{applicationName,jdbcType=VARCHAR},
+      #{applicationDescription,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, #{prodDomain,jdbcType=VARCHAR},
+      #{testDomain,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{applicationStatus,jdbcType=INTEGER},
+      #{keepRecord,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{releaseTime,jdbcType=TIMESTAMP},
+      #{version,jdbcType=VARCHAR})
+    </insert>
+    <!--id查询指定应用-->
+    <select id="findApplicationById" parameterType="Map"  resultType="com.model.Application">
+        SELECT id, creator, applicationName, applicationDescription, logo, prodDomain, testDomain,
+        status, applicationStatus, keepRecord, createTime, releaseTime, version
+        FROM application
+        WHERE status = 1 AND id = #{id}
+    </select>
+    <!--Domain查询指定应用-->
+    <select id="findApplicationByDomain" parameterType="Map"  resultType="com.model.Application">
+        SELECT id, creator, applicationName, applicationDescription, logo, prodDomain, testDomain,
+        status, applicationStatus, keepRecord, createTime, releaseTime, version
+        FROM application
+        WHERE status = 1 AND (prodDomain = #{domain} OR testDomain = #{domain})  LIMIT 1
+    </select>
+    <!--修改应用-->
+    <update id="updateApplication" parameterType="com.model.Application">
+        UPDATE application
+        <set>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="applicationName != null">
+                applicationName = #{applicationName,jdbcType=VARCHAR},
+            </if>
+            <if test="applicationDescription != null">
+                applicationDescription = #{applicationDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="logo != null">
+                logo = #{logo,jdbcType=VARCHAR},
+            </if>
+            <if test="prodDomain != null">
+                prodDomain = #{prodDomain,jdbcType=VARCHAR},
+            </if>
+            <if test="testDomain != null">
+                testDomain = #{testDomain,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="applicationStatus != null">
+                applicationStatus = #{applicationStatus,jdbcType=INTEGER},
+            </if>
+            <if test="keepRecord != null">
+                keepRecord = #{keepRecord,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                createTime = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="releaseTime != null">
+                releaseTime = #{releaseTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="version != null">
+                version = #{version,jdbcType=VARCHAR},
+            </if>
+        </set>
+        WHERE id = #{id,jdbcType=VARCHAR}
+    </update>
 </mapper>

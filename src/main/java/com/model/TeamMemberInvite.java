@@ -4,25 +4,18 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class TeamMemberAuthority {
+public class TeamMemberInvite {
     private String id;
-
-    private String applicationId;
 
     private String memberId;
 
     private String teamId;
 
-    private Boolean isViewDetails;
-
-    private Boolean isRelease;
-
-    private Boolean isDevelop;
+    private String inviteCode;
 
     private Integer status;
 
     private Date createTime;
 
-    private Date updateTime;
-
+    private Date invalidTime;
 }
