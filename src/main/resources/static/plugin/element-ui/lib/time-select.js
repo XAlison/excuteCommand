@@ -419,8 +419,8 @@ module.exports =
                 return range.map(normalizeDate);
             });
             if (nranges.some(function (nrange) {
-                    return ndate >= nrange[0] && ndate <= nrange[1];
-                })) return date;
+                return ndate >= nrange[0] && ndate <= nrange[1];
+            })) return date;
 
             var minDate = nranges[0][0];
             var maxDate = nranges[0][0];
@@ -737,11 +737,11 @@ module.exports =
                     var _this2 = this;
 
                     var selected = this.items.map(function (item) {
-                            return item.value;
-                        }).indexOf(this.value) !== -1;
+                        return item.value;
+                    }).indexOf(this.value) !== -1;
                     var hasDefault = this.items.map(function (item) {
-                            return item.value;
-                        }).indexOf(this.defaultValue) !== -1;
+                        return item.value;
+                    }).indexOf(this.defaultValue) !== -1;
                     var option = selected && '.selected' || hasDefault && '.default' || '.time-select-item:not(.disabled)';
                     this.$nextTick(function () {
                         return _this2.scrollToOption(option);
@@ -764,10 +764,10 @@ module.exports =
                 },
                 isValidValue: function isValidValue(date) {
                     return this.items.filter(function (item) {
-                            return !item.disabled;
-                        }).map(function (item) {
-                            return item.value;
-                        }).indexOf(date) !== -1;
+                        return !item.disabled;
+                    }).map(function (item) {
+                        return item.value;
+                    }).indexOf(date) !== -1;
                 },
                 handleKeydown: function handleKeydown(event) {
                     var keyCode = event.keyCode;

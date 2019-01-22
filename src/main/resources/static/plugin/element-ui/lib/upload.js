@@ -1154,6 +1154,7 @@ module.exports =
 
         exports.__esModule = true;
         exports.default = upload;
+
         function getError(action, option, xhr) {
             var msg = void 0;
             if (xhr.response) {
@@ -1553,8 +1554,8 @@ module.exports =
                                     accept: this.accept
                                 },
                                 ref: 'input', on: {
-                                'change': this.handleChange
-                            }
+                                    'change': this.handleChange
+                                }
                             },
                             []
                         ), h(

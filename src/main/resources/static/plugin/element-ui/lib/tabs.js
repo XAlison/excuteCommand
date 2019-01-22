@@ -707,8 +707,8 @@ module.exports =
                     'span',
                     {
                         'class': ['el-tabs__nav-prev', scrollable.prev ? '' : 'is-disabled'], on: {
-                        'click': scrollPrev
-                    }
+                            'click': scrollPrev
+                        }
                     },
                     [h(
                         'i',
@@ -719,8 +719,8 @@ module.exports =
                     'span',
                     {
                         'class': ['el-tabs__nav-next', scrollable.next ? '' : 'is-disabled'], on: {
-                        'click': scrollNext
-                    }
+                            'click': scrollNext
+                        }
                     },
                     [h(
                         'i',
@@ -741,10 +741,10 @@ module.exports =
                         'span',
                         {
                             'class': 'el-icon-close', on: {
-                            'click': function click(ev) {
-                                onTabRemove(pane, ev);
+                                'click': function click(ev) {
+                                    onTabRemove(pane, ev);
+                                }
                             }
-                        }
                         },
                         []
                     ) : null;

@@ -32,8 +32,8 @@ var isServer = typeof window === 'undefined';
 var requestFrame = function () {
     if (isServer) return;
     var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || function (fn) {
-            return window.setTimeout(fn, 20);
-        };
+        return window.setTimeout(fn, 20);
+    };
     return function (fn) {
         return raf(fn);
     };

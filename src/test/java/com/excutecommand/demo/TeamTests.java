@@ -76,7 +76,7 @@ public class TeamTests {
 //        invite.setInvalidTime(invalidTime.toDate());
 //        Boolean obj3 = teamService.isLinkInvite("78956");
 
-        TeamViewModel teamViewModel=new TeamViewModel();
+        TeamViewModel teamViewModel = new TeamViewModel();
         teamViewModel.setTeamId("1");
         teamViewModel.setMemberId("1");
         List<MemberAuthorityModel> obj = teamService.findMemberAuth(teamViewModel);

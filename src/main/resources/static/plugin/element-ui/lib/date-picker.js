@@ -419,8 +419,8 @@ module.exports =
                 return range.map(normalizeDate);
             });
             if (nranges.some(function (nrange) {
-                    return ndate >= nrange[0] && ndate <= nrange[1];
-                })) return date;
+                return ndate >= nrange[0] && ndate <= nrange[1];
+            })) return date;
 
             var minDate = nranges[0][0];
             var maxDate = nranges[0][0];
@@ -1852,8 +1852,8 @@ module.exports =
                     }
 
                     if (cell.type === 'normal' && defaultValue.some(function (date) {
-                            return _this.cellMatchesDate(cell, date);
-                        })) {
+                        return _this.cellMatchesDate(cell, date);
+                    })) {
                         classes.push('default');
                     }
 
@@ -4714,7 +4714,7 @@ module.exports =
                             _vm.handleClick('hours', {value: hour, disabled: disabled})
                         }
                     }
-                }, [_vm._v(_vm._s(('0' + (_vm.amPmMode ? (hour % 12 || 12) : hour )).slice(-2)) + _vm._s(_vm.amPm(hour)))])
+                }, [_vm._v(_vm._s(('0' + (_vm.amPmMode ? (hour % 12 || 12) : hour)).slice(-2)) + _vm._s(_vm.amPm(hour)))])
             })), _c('el-scrollbar', {
                 ref: "minutes",
                 staticClass: "el-time-spinner__wrapper",
@@ -4801,7 +4801,7 @@ module.exports =
                 return _c('li', {
                     staticClass: "el-time-spinner__item",
                     class: {'active': hour === _vm.hours, 'disabled': _vm.hoursList[hour]}
-                }, [_vm._v(_vm._s(hour === undefined ? '' : ('0' + (_vm.amPmMode ? (hour % 12 || 12) : hour )).slice(-2) + _vm.amPm(hour)))])
+                }, [_vm._v(_vm._s(hour === undefined ? '' : ('0' + (_vm.amPmMode ? (hour % 12 || 12) : hour)).slice(-2) + _vm.amPm(hour)))])
             }))]), _c('div', {
                 staticClass: "el-time-spinner__wrapper is-arrow", on: {
                     "mouseenter": function ($event) {

@@ -31,7 +31,7 @@ public class CommandController extends AbstractController {
     @Autowired
     private CommandService commandService;
     @Autowired
-    private  DataSource dataSource;
+    private DataSource dataSource;
 
     @RequestMapping("/getTables")
     public List<BaseTable> getTables(HttpServletRequest request) throws IOException, SQLException {

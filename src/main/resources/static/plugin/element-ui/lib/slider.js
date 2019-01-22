@@ -400,8 +400,8 @@ module.exports =
             watch: {
                 value: function value(val, oldVal) {
                     if (this.dragging || Array.isArray(val) && Array.isArray(oldVal) && val.every(function (item, index) {
-                            return item === oldVal[index];
-                        })) {
+                        return item === oldVal[index];
+                    })) {
                         return;
                     }
                     this.setValues();

@@ -22,7 +22,7 @@ public class ApplicationController {
 
     @PostMapping("/addApplication")
     public Result addApplication(@RequestBody ApplicationModel model) {
-        Application application=new Application();
+        Application application = new Application();
         application.setId(UUID.randomUUID().toString());
 //        application.setCreator(copy.getCreator());
 //        application.setApplicationName(copy.getApplicationName());

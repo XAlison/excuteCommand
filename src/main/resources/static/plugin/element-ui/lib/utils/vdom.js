@@ -19,6 +19,6 @@ function isVNode(node) {
 
 function getFirstComponentChild(children) {
     return children && children.filter(function (c) {
-            return c && c.tag;
-        })[0];
+        return c && c.tag;
+    })[0];
 };

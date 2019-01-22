@@ -979,16 +979,16 @@ module.exports =
                         return parseInt(v, 10);
                     }).slice(1);
                     if (list.some(function (v) {
-                            return isNaN(v);
-                        })) return false;
+                        return isNaN(v);
+                    })) return false;
                     var r = list[0],
                         g = list[1],
                         b = list[2],
                         a = list[3];
 
                     if ([r, g, b].some(function (v) {
-                            return v < 0 || v > 255;
-                        }) || a < 0 || a > 1) return false;
+                        return v < 0 || v > 255;
+                    }) || a < 0 || a > 1) return false;
                     return true;
                 }
             },

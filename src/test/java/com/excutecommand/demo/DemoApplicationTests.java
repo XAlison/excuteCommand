@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class DemoApplicationTests {
     @Autowired
     private CommandService commandService;
+
     @Test
     public void contextLoads() {
         List<BaseTable> obj = commandService.selectBaseTables();

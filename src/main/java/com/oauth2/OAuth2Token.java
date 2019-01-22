@@ -9,7 +9,7 @@ public class OAuth2Token implements AuthenticationToken {
 
     private String token;
 
-    OAuth2Token(String token){
+    OAuth2Token(String token) {
         this.token = token;
     }
 

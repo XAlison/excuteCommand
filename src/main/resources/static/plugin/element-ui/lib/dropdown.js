@@ -651,9 +651,9 @@ module.exports =
                     'div',
                     {
                         'class': 'el-dropdown', directives: [{
-                        name: 'clickoutside',
-                        value: hide
-                    }]
+                            name: 'clickoutside',
+                            value: hide
+                        }]
                     },
                     [triggerElm, this.$slots.dropdown]
                 );

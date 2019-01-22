@@ -567,8 +567,8 @@ module.exports =
                     var labels = [];
                     this.currentValue.forEach(function (value) {
                         var targetOption = options && options.filter(function (option) {
-                                return option[_this.valueKey] === value;
-                            })[0];
+                            return option[_this.valueKey] === value;
+                        })[0];
                         if (targetOption) {
                             labels.push(targetOption[_this.labelKey]);
                             options = targetOption[_this.childrenKey];

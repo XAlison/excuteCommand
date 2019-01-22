@@ -25,10 +25,11 @@ public class ApplicationTests {
     private TeamService teamService;
     @Autowired
     private ApplicationService applicationService;
+
     @Test
     public void contextLoads() {
 
-        Application application=new Application();
+        Application application = new Application();
         application.setId("059e583b-101c-4426-a389-abcd279c0a54");
         application.setCreator("222ef3b8-9525-4f97-aa6e-081efb66df42");
         application.setApplicationName("北京华奥设计平台");

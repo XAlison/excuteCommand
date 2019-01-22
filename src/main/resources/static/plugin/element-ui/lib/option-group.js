@@ -334,8 +334,8 @@ module.exports =
             methods: {
                 queryChange: function queryChange() {
                     this.visible = this.$children && Array.isArray(this.$children) && this.$children.some(function (option) {
-                            return option.visible === true;
-                        });
+                        return option.visible === true;
+                    });
                 }
             },
 

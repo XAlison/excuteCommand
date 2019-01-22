@@ -360,8 +360,8 @@ module.exports =
                 var radios = this.$el.querySelectorAll('[type=radio]');
                 var firstLabel = this.$el.querySelectorAll('[role=radio]')[0];
                 if (![].some.call(radios, function (radio) {
-                        return radio.checked;
-                    }) && firstLabel) {
+                    return radio.checked;
+                }) && firstLabel) {
                     firstLabel.tabIndex = 0;
                 }
             },

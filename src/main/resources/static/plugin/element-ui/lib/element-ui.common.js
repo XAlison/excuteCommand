@@ -461,8 +461,8 @@ module.exports =
                 return range.map(normalizeDate);
             });
             if (nranges.some(function (nrange) {
-                    return ndate >= nrange[0] && ndate <= nrange[1];
-                })) return date;
+                return ndate >= nrange[0] && ndate <= nrange[1];
+            })) return date;
 
             var minDate = nranges[0][0];
             var maxDate = nranges[0][0];
@@ -3931,9 +3931,9 @@ module.exports =
                     'div',
                     {
                         'class': 'el-dropdown', directives: [{
-                        name: 'clickoutside',
-                        value: hide
-                    }]
+                            name: 'clickoutside',
+                            value: hide
+                        }]
                     },
                     [triggerElm, this.$slots.dropdown]
                 );
@@ -6979,8 +6979,8 @@ module.exports =
                 var radios = this.$el.querySelectorAll('[type=radio]');
                 var firstLabel = this.$el.querySelectorAll('[role=radio]')[0];
                 if (![].some.call(radios, function (radio) {
-                        return radio.checked;
-                    }) && firstLabel) {
+                    return radio.checked;
+                }) && firstLabel) {
                     firstLabel.tabIndex = 0;
                 }
             },
@@ -9700,8 +9700,8 @@ module.exports =
             computed: {
                 optionsAllDisabled: function optionsAllDisabled() {
                     return this.options.length === this.options.filter(function (item) {
-                            return item.disabled === true;
-                        }).length;
+                        return item.disabled === true;
+                    }).length;
                 }
             },
 
@@ -10107,8 +10107,8 @@ module.exports =
             methods: {
                 queryChange: function queryChange() {
                     this.visible = this.$children && Array.isArray(this.$children) && this.$children.some(function (option) {
-                            return option.visible === true;
-                        });
+                        return option.visible === true;
+                    });
                 }
             },
 
@@ -12586,29 +12586,29 @@ module.exports =
                                                 'span',
                                                 {
                                                     'class': 'caret-wrapper', on: {
-                                                    'click': function click($event) {
-                                                        return _this.handleSortClick($event, column);
+                                                        'click': function click($event) {
+                                                            return _this.handleSortClick($event, column);
+                                                        }
                                                     }
-                                                }
                                                 },
                                                 [h(
                                                     'i',
                                                     {
                                                         'class': 'sort-caret ascending', on: {
-                                                        'click': function click($event) {
-                                                            return _this.handleSortClick($event, column, 'ascending');
+                                                            'click': function click($event) {
+                                                                return _this.handleSortClick($event, column, 'ascending');
+                                                            }
                                                         }
-                                                    }
                                                     },
                                                     []
                                                 ), h(
                                                     'i',
                                                     {
                                                         'class': 'sort-caret descending', on: {
-                                                        'click': function click($event) {
-                                                            return _this.handleSortClick($event, column, 'descending');
+                                                            'click': function click($event) {
+                                                                return _this.handleSortClick($event, column, 'descending');
+                                                            }
                                                         }
-                                                    }
                                                     },
                                                     []
                                                 )]
@@ -12616,10 +12616,10 @@ module.exports =
                                                 'span',
                                                 {
                                                     'class': 'el-table__column-filter-trigger', on: {
-                                                    'click': function click($event) {
-                                                        return _this.handleFilterClick($event, column);
+                                                        'click': function click($event) {
+                                                            return _this.handleFilterClick($event, column);
+                                                        }
                                                     }
-                                                }
                                                 },
                                                 [h(
                                                     'i',
@@ -16424,7 +16424,7 @@ module.exports =
                             _vm.handleClick('hours', {value: hour, disabled: disabled})
                         }
                     }
-                }, [_vm._v(_vm._s(('0' + (_vm.amPmMode ? (hour % 12 || 12) : hour )).slice(-2)) + _vm._s(_vm.amPm(hour)))])
+                }, [_vm._v(_vm._s(('0' + (_vm.amPmMode ? (hour % 12 || 12) : hour)).slice(-2)) + _vm._s(_vm.amPm(hour)))])
             })), _c('el-scrollbar', {
                 ref: "minutes",
                 staticClass: "el-time-spinner__wrapper",
@@ -16511,7 +16511,7 @@ module.exports =
                 return _c('li', {
                     staticClass: "el-time-spinner__item",
                     class: {'active': hour === _vm.hours, 'disabled': _vm.hoursList[hour]}
-                }, [_vm._v(_vm._s(hour === undefined ? '' : ('0' + (_vm.amPmMode ? (hour % 12 || 12) : hour )).slice(-2) + _vm.amPm(hour)))])
+                }, [_vm._v(_vm._s(hour === undefined ? '' : ('0' + (_vm.amPmMode ? (hour % 12 || 12) : hour)).slice(-2) + _vm.amPm(hour)))])
             }))]), _c('div', {
                 staticClass: "el-time-spinner__wrapper is-arrow", on: {
                     "mouseenter": function ($event) {
@@ -17282,8 +17282,8 @@ module.exports =
                     }
 
                     if (cell.type === 'normal' && defaultValue.some(function (date) {
-                            return _this.cellMatchesDate(cell, date);
-                        })) {
+                        return _this.cellMatchesDate(cell, date);
+                    })) {
                         classes.push('default');
                     }
 
@@ -18741,11 +18741,11 @@ module.exports =
                     var _this2 = this;
 
                     var selected = this.items.map(function (item) {
-                            return item.value;
-                        }).indexOf(this.value) !== -1;
+                        return item.value;
+                    }).indexOf(this.value) !== -1;
                     var hasDefault = this.items.map(function (item) {
-                            return item.value;
-                        }).indexOf(this.defaultValue) !== -1;
+                        return item.value;
+                    }).indexOf(this.defaultValue) !== -1;
                     var option = selected && '.selected' || hasDefault && '.default' || '.time-select-item:not(.disabled)';
                     this.$nextTick(function () {
                         return _this2.scrollToOption(option);
@@ -18768,10 +18768,10 @@ module.exports =
                 },
                 isValidValue: function isValidValue(date) {
                     return this.items.filter(function (item) {
-                            return !item.disabled;
-                        }).map(function (item) {
-                            return item.value;
-                        }).indexOf(date) !== -1;
+                        return !item.disabled;
+                    }).map(function (item) {
+                        return item.value;
+                    }).indexOf(date) !== -1;
                 },
                 handleKeydown: function handleKeydown(event) {
                     var keyCode = event.keyCode;
@@ -22160,8 +22160,8 @@ module.exports =
                     'span',
                     {
                         'class': ['el-tabs__nav-prev', scrollable.prev ? '' : 'is-disabled'], on: {
-                        'click': scrollPrev
-                    }
+                            'click': scrollPrev
+                        }
                     },
                     [h(
                         'i',
@@ -22172,8 +22172,8 @@ module.exports =
                     'span',
                     {
                         'class': ['el-tabs__nav-next', scrollable.next ? '' : 'is-disabled'], on: {
-                        'click': scrollNext
-                    }
+                            'click': scrollNext
+                        }
                     },
                     [h(
                         'i',
@@ -22194,10 +22194,10 @@ module.exports =
                         'span',
                         {
                             'class': 'el-icon-close', on: {
-                            'click': function click(ev) {
-                                onTabRemove(pane, ev);
+                                'click': function click(ev) {
+                                    onTabRemove(pane, ev);
+                                }
                             }
-                        }
                         },
                         []
                     ) : null;
@@ -25129,8 +25129,8 @@ module.exports =
             watch: {
                 value: function value(val, oldVal) {
                     if (this.dragging || Array.isArray(val) && Array.isArray(oldVal) && val.every(function (item, index) {
-                            return item === oldVal[index];
-                        })) {
+                        return item === oldVal[index];
+                    })) {
                         return;
                     }
                     this.setValues();
@@ -27398,6 +27398,7 @@ module.exports =
 
         exports.__esModule = true;
         exports.default = upload;
+
         function getError(action, option, xhr) {
             var msg = void 0;
             if (xhr.response) {
@@ -27797,8 +27798,8 @@ module.exports =
                                     accept: this.accept
                                 },
                                 ref: 'input', on: {
-                                'change': this.handleChange
-                            }
+                                    'change': this.handleChange
+                                }
                             },
                             []
                         ), h(
@@ -28668,7 +28669,7 @@ module.exports =
                 directives: [{
                     name: "show",
                     rawName: "v-show",
-                    value: (!_vm.hidden && ( _vm.content || _vm.isDot )),
+                    value: (!_vm.hidden && (_vm.content || _vm.isDot)),
                     expression: "!hidden && ( content || isDot )"
                 }],
                 staticClass: "el-badge__content",
@@ -31412,8 +31413,8 @@ module.exports =
                     var labels = [];
                     this.currentValue.forEach(function (value) {
                         var targetOption = options && options.filter(function (option) {
-                                return option[_this.valueKey] === value;
-                            })[0];
+                            return option[_this.valueKey] === value;
+                        })[0];
                         if (targetOption) {
                             labels.push(targetOption[_this.labelKey]);
                             options = targetOption[_this.childrenKey];
@@ -32962,16 +32963,16 @@ module.exports =
                         return parseInt(v, 10);
                     }).slice(1);
                     if (list.some(function (v) {
-                            return isNaN(v);
-                        })) return false;
+                        return isNaN(v);
+                    })) return false;
                     var r = list[0],
                         g = list[1],
                         b = list[2],
                         a = list[3];
 
                     if ([r, g, b].some(function (v) {
-                            return v < 0 || v > 255;
-                        }) || a < 0 || a > 1) return false;
+                        return v < 0 || v > 255;
+                    }) || a < 0 || a > 1) return false;
                     return true;
                 }
             },
@@ -34260,8 +34261,8 @@ module.exports =
                         var _this2 = this;
 
                         if (oldVal && val.length === oldVal.length && val.every(function (item) {
-                                return oldVal.indexOf(item) > -1;
-                            })) return;
+                            return oldVal.indexOf(item) > -1;
+                        })) return;
                         var checked = [];
                         var checkableDataKeys = this.checkableData.map(function (item) {
                             return item[_this2.keyProp];
@@ -34341,8 +34342,8 @@ module.exports =
                         return item[_this5.keyProp];
                     });
                     this.allChecked = checkableDataKeys.length > 0 && checkableDataKeys.every(function (item) {
-                            return _this5.checked.indexOf(item) > -1;
-                        });
+                        return _this5.checked.indexOf(item) > -1;
+                    });
                 },
                 handleAllCheckedChange: function handleAllCheckedChange(value) {
                     var _this6 = this;

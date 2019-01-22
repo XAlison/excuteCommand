@@ -13,12 +13,12 @@ public class CommandService {
     @Autowired
     private CommandMapper commandMapper;
 
-    @DataSource(name=DataSourceNames.SECOND)
+    @DataSource(name = DataSourceNames.SECOND)
     public List<BaseTable> selectBaseTables() {
         return commandMapper.selectBaseTables();
     }
 
-    @DataSource(name=DataSourceNames.SECOND)
+    @DataSource(name = DataSourceNames.SECOND)
     public int executeSqlCmd(String paramSQL) {
         return commandMapper.executeSqlCmd(paramSQL);
     }

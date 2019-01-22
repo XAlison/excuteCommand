@@ -8,12 +8,12 @@ import org.apache.shiro.SecurityUtils;
  */
 public abstract class AbstractController {
 
-	protected Member getMember() {
-		return (Member) SecurityUtils.getSubject().getPrincipal();
-	}
+    protected Member getMember() {
+        return (Member) SecurityUtils.getSubject().getPrincipal();
+    }
 
-	protected String getMemberId() {
-		return getMember().getId();
-	}
+    protected String getMemberId() {
+        return getMember().getId();
+    }
 
 }

@@ -1,24 +1,23 @@
 package com.controller;
 
 import com.aliyuncs.IAcsClient;
-import com.aliyuncs.jaq.model.v20161123.SpamRegisterPreventionRequest;
+import com.aliyuncs.afs.model.v20180112.AuthenticateSigRequest;
+import com.aliyuncs.afs.model.v20180112.AuthenticateSigResponse;
 import com.common.utils.Result;
 import com.model.AliyunVerifyModel;
 import com.model.Member;
 import com.service.MemberService;
 import java.util.UUID;
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/member")
-public class MemberController  extends AbstractController{
+public class MemberController extends AbstractController {
     @Autowired
     private MemberService memberService;
     @Autowired
@@ -33,64 +32,24 @@ public class MemberController  extends AbstractController{
      */
     @PostMapping("/check")
     public void check(@RequestBody AliyunVerifyModel loginModel) {
-        SpamRegisterPreventionRequest request = new SpamRegisterPreventionRequest();
-        // 必填参数
-        request.setPhoneNumber("15087429695");
-        request.setIp("192.167.10.11");
-        request.setProtocolVersion("1.0.1");
-        request.setSource(1); //注册来源。1：PC网页；2：移动网页；3：APP;4:其它
-        request.setJsToken(""); //对应前端页面的afs_token，source来源为1&2&4时，必填;
-        request.setSDKToken("");//对应sdk中获取的wtoken，source来源为3时，必填;
-
-        // 选填参数
-        request.setEmail("");
-        request.setUserId("");
-        request.setIdType(1);
-        request.setCurrentUrl("");
-        request.setAgent("");
-        request.setCookie("");
-        request.setSessionId("");
-        request.setMacAddress("");
-        request.setReferer("");
-        request.setNickName("");
-        request.setCompanyName("");
-        request.setAddress("");
-        request.setIDNumber("");
-        request.setBankCardNumber("");
-        request.setExtendData("");
-
-//        AuthenticateSigRequest request = new AuthenticateSigRequest();
-//
-//        // 必填参数，从前端获取，不可更改
-//        request.setSessionId(loginModel.getSessionId());
-//        // 必填参数，从前端获取，不可更改
-//        request.setSig(loginModel.getSig());
-//        // 必填参数，从前端获取，不可更改
-//        request.setToken(loginModel.getToken());
-//        // 必填参数，从前端获取，不可更改
-//        request.setScene(loginModel.getScene());
-//        // 必填参数，后端填写
-//        request.setAppKey(APP_KEY);
-//        // 必填参数，后端填写
-//        request.setRemoteIp(HttpRequest.getIpAddress(req));
+        AuthenticateSigRequest request = new AuthenticateSigRequest();
+        request.setSessionId("xxx");// 必填参数，从前端获取，不可更改，android和ios只传这个参数即可
+        request.setSig("xxx");// 必填参数，从前端获取，不可更改
+        request.setToken("xxx");// 必填参数，从前端获取，不可更改
+        request.setScene("xxx");// 必填参数，从前端获取，不可更改
+        request.setAppKey("xxx");// 必填参数，后端填写
+        request.setRemoteIp("xxx");// 必填参数，后端填写
 
         try {
-            // response的code枚举：100验签通过，900验签失败
-            Object response = client.getAcsResponse(request);
-            if (response.toString().equals(1000)) {
+            AuthenticateSigResponse response = client.getAcsResponse(request);
+            if (response.getCode() == 100) {
                 System.out.println("验签通过");
-                //String phone = loginModel.getPhone();
-                //String password = loginModel.getPassword();
-                //TODO 请求server层 执行登录相关操作.
-
             } else {
                 System.out.println("验签失败");
-
             }
+            // TODO
         } catch (Exception e) {
             e.printStackTrace();
-
-
         }
 
     }

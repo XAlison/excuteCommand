@@ -27,6 +27,7 @@ public class AliyunConfig {
     private String accessKeySecret;
     @Value("${aliyun.verify.key}")
     private String key;
+
     @Bean
     public IAcsClient client() throws Exception {
         IClientProfile profile = DefaultProfile.getProfile(regionId, accessKeyId, accessKeySecret);

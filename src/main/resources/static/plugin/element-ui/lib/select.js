@@ -1298,8 +1298,8 @@ module.exports =
             computed: {
                 optionsAllDisabled: function optionsAllDisabled() {
                     return this.options.length === this.options.filter(function (item) {
-                            return item.disabled === true;
-                        }).length;
+                        return item.disabled === true;
+                    }).length;
                 }
             },
 

@@ -1,6 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
+
 function _broadcast(componentName, eventName, params) {
     this.$children.forEach(function (child) {
         var name = child.$options.componentName;
@@ -12,6 +13,7 @@ function _broadcast(componentName, eventName, params) {
         }
     });
 }
+
 exports.default = {
     methods: {
         dispatch: function dispatch(componentName, eventName, params) {

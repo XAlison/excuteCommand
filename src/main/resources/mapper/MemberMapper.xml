@@ -3,12 +3,12 @@
 <mapper namespace="com.mapper.MemberMapper">
 
     <insert id="register" parameterType="com.model.Member">
-    INSERT INTO member (id, phone, memberName,
-      companyName, password, status,
-      registerTime)
-    VALUES (#{id,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{memberName,jdbcType=VARCHAR},
-      #{companyName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
-      #{registerTime,jdbcType=TIMESTAMP})
+        INSERT INTO member (id, phone, memberName,
+        companyName, password, status,
+        registerTime)
+        VALUES (#{id,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{memberName,jdbcType=VARCHAR},
+        #{companyName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
+        #{registerTime,jdbcType=TIMESTAMP})
     </insert>
 
     <select id="findMemberByPhone" parameterType="String" resultType="com.model.Member">
@@ -16,7 +16,7 @@
         companyName, password, status,
         registerTime
         FROM member
-        WHERE phone = #{phone,jdbcType=VARCHAR} AND  status = 1
+        WHERE phone = #{phone,jdbcType=VARCHAR} AND status = 1
     </select>
 
     <select id="findMemberById" parameterType="String" resultType="com.model.Member">
@@ -24,7 +24,7 @@
         companyName, password, status,
         registerTime
         FROM member
-        WHERE id = #{id,jdbcType=VARCHAR} AND  status = 1
+        WHERE id = #{id,jdbcType=VARCHAR} AND status = 1
     </select>
 
     <select id="login" parameterType="com.model.Member" resultType="com.model.Member">
@@ -32,11 +32,11 @@
         companyName, password, status,
         registerTime
         FROM member
-        WHERE phone = #{phone,jdbcType=VARCHAR} AND   password = #{password,jdbcType=VARCHAR} AND  status = 1
+        WHERE phone = #{phone,jdbcType=VARCHAR} AND password = #{password,jdbcType=VARCHAR} AND status = 1
     </select>
 
     <update id="setPassword" parameterType="com.model.Member">
-        UPDATE member SET password = #{password,jdbcType=VARCHAR}  WHERE id = #{id,jdbcType=VARCHAR}
+        UPDATE member SET password = #{password,jdbcType=VARCHAR} WHERE id = #{id,jdbcType=VARCHAR}
     </update>
 
 </mapper>

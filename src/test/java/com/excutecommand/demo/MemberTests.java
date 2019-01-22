@@ -18,9 +18,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class MemberTests {
     @Autowired
     private MemberService memberService;
+
     @Test
     public void contextLoads() {
-        Member member =new Member();
+        Member member = new Member();
         member.setId("222ef3b8-9525-4f97-aa6e-081efb66df43");
         member.setPhone("15087429695");
         member.setMemberName("张三");

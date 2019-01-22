@@ -10,40 +10,41 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 /**
  * 异常处理器
+ *
  * @author LingDu
  * @version 1.0
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-	private Logger logger = LoggerFactory.getLogger(getClass());
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
-	/**
-	 * 处理自定义异常
-	 */
-	@ExceptionHandler(GlobalException.class)
-	public Result handleRRException(GlobalException e){
-		Result result = new Result();
-		result.put("code", e.getCode());
-		result.put("msg", e.getMessage());
-		return result;
-	}
+    /**
+     * 处理自定义异常
+     */
+    @ExceptionHandler(GlobalException.class)
+    public Result handleRRException(GlobalException e) {
+        Result result = new Result();
+        result.put("code", e.getCode());
+        result.put("msg", e.getMessage());
+        return result;
+    }
 
-	@ExceptionHandler(NoHandlerFoundException.class)
-	public Result handlerNoFoundException(Exception e) {
-		logger.error(e.getMessage(), e);
-		return Result.error(404, "路径不存在，请检查路径是否正确");
-	}
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public Result handlerNoFoundException(Exception e) {
+        logger.error(e.getMessage(), e);
+        return Result.error(404, "路径不存在，请检查路径是否正确");
+    }
 
-	@ExceptionHandler(DuplicateKeyException.class)
-	public Result handleDuplicateKeyException(DuplicateKeyException e){
-		logger.error(e.getMessage(), e);
-		return Result.error("数据库中已存在该记录");
-	}
+    @ExceptionHandler(DuplicateKeyException.class)
+    public Result handleDuplicateKeyException(DuplicateKeyException e) {
+        logger.error(e.getMessage(), e);
+        return Result.error("数据库中已存在该记录");
+    }
 
 
-	@ExceptionHandler(Exception.class)
-	public Result handleException(Exception e){
-		logger.error(e.getMessage(), e);
-		return Result.error();
-	}
+    @ExceptionHandler(Exception.class)
+    public Result handleException(Exception e) {
+        logger.error(e.getMessage(), e);
+        return Result.error();
+    }
 }

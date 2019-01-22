@@ -15,8 +15,8 @@ public class UploadController {
 
     @PostMapping("/index")
     public @ResponseBody
-    String Index (HttpServletRequest request, MultipartFile file) {
-        try{
+    String Index(HttpServletRequest request, MultipartFile file) {
+        try {
             String uploadDir = request.getServletContext().getRealPath("/static/upload/");
             File dir = new File(uploadDir);
             if (!dir.exists()) {

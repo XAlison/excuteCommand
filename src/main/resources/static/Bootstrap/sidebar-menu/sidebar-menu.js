@@ -28,7 +28,7 @@
                 text.addClass('menu-text').text(item.text);
                 a.append(icon);
                 a.append(text);
-                if (item.menus&&item.menus.length>0) {
+                if (item.menus && item.menus.length > 0) {
                     a.attr('href', '#');
                     a.addClass('dropdown-toggle');
                     var arrow = $('<b></b>');

@@ -2394,29 +2394,29 @@ module.exports =
                                                 'span',
                                                 {
                                                     'class': 'caret-wrapper', on: {
-                                                    'click': function click($event) {
-                                                        return _this.handleSortClick($event, column);
+                                                        'click': function click($event) {
+                                                            return _this.handleSortClick($event, column);
+                                                        }
                                                     }
-                                                }
                                                 },
                                                 [h(
                                                     'i',
                                                     {
                                                         'class': 'sort-caret ascending', on: {
-                                                        'click': function click($event) {
-                                                            return _this.handleSortClick($event, column, 'ascending');
+                                                            'click': function click($event) {
+                                                                return _this.handleSortClick($event, column, 'ascending');
+                                                            }
                                                         }
-                                                    }
                                                     },
                                                     []
                                                 ), h(
                                                     'i',
                                                     {
                                                         'class': 'sort-caret descending', on: {
-                                                        'click': function click($event) {
-                                                            return _this.handleSortClick($event, column, 'descending');
+                                                            'click': function click($event) {
+                                                                return _this.handleSortClick($event, column, 'descending');
+                                                            }
                                                         }
-                                                    }
                                                     },
                                                     []
                                                 )]
@@ -2424,10 +2424,10 @@ module.exports =
                                                 'span',
                                                 {
                                                     'class': 'el-table__column-filter-trigger', on: {
-                                                    'click': function click($event) {
-                                                        return _this.handleFilterClick($event, column);
+                                                        'click': function click($event) {
+                                                            return _this.handleFilterClick($event, column);
+                                                        }
                                                     }
-                                                }
                                                 },
                                                 [h(
                                                     'i',

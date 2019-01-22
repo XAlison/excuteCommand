@@ -748,8 +748,8 @@ module.exports =
                         var _this2 = this;
 
                         if (oldVal && val.length === oldVal.length && val.every(function (item) {
-                                return oldVal.indexOf(item) > -1;
-                            })) return;
+                            return oldVal.indexOf(item) > -1;
+                        })) return;
                         var checked = [];
                         var checkableDataKeys = this.checkableData.map(function (item) {
                             return item[_this2.keyProp];
@@ -829,8 +829,8 @@ module.exports =
                         return item[_this5.keyProp];
                     });
                     this.allChecked = checkableDataKeys.length > 0 && checkableDataKeys.every(function (item) {
-                            return _this5.checked.indexOf(item) > -1;
-                        });
+                        return _this5.checked.indexOf(item) > -1;
+                    });
                 },
                 handleAllCheckedChange: function handleAllCheckedChange(value) {
                     var _this6 = this;

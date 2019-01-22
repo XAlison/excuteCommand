@@ -3,18 +3,18 @@
 <mapper namespace="com.mapper.TokenMapper">
 
     <select id="findTokenInfoByToken" resultType="com.model.Token">
-		SELECT * FROM member_token where token = #{token}
-	</select>
+        SELECT * FROM member_token where token = #{token}
+    </select>
 
     <select id="findTokenByMemberId" resultType="com.model.Token">
-		SELECT * FROM member_token where memberId = #{memberId}
-	</select>
+        SELECT * FROM member_token where memberId = #{memberId}
+    </select>
 
     <insert id="addToken" parameterType="com.model.Token">
-    INSERT INTO member_token (memberId, token, expire_time,
-      update_time)
-    VALUES (#{memberId,jdbcType=BIGINT}, #{token,jdbcType=VARCHAR}, #{expireTime,jdbcType=TIMESTAMP},
-      #{updateTime,jdbcType=TIMESTAMP})
+        INSERT INTO member_token (memberId, token, expire_time,
+        update_time)
+        VALUES (#{memberId,jdbcType=BIGINT}, #{token,jdbcType=VARCHAR}, #{expireTime,jdbcType=TIMESTAMP},
+        #{updateTime,jdbcType=TIMESTAMP})
     </insert>
 
     <update id="updateToken" parameterType="com.model.Token">

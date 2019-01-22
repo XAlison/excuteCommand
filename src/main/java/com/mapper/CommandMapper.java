@@ -9,8 +9,8 @@ import org.apache.ibatis.annotations.Param;
 
 public interface CommandMapper {
 
-    @DataSource(name=DataSourceNames.SECOND)
+    @DataSource(name = DataSourceNames.SECOND)
     List<BaseTable> selectBaseTables();
 
-    int executeSqlCmd(@Param("paramSQL")String paramSQL);
+    int executeSqlCmd(@Param("paramSQL") String paramSQL);
 }
